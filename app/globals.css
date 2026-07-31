@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-base text-ink font-body antialiased;
+  }
+  ::selection {
+    @apply bg-volt text-base;
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.volt.DEFAULT");
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .trace {
+    /* linha de "trilha de circuito" usada como divisor de seção */
+    background-image: repeating-linear-gradient(
+      90deg,
+      theme("colors.base.line") 0px,
+      theme("colors.base.line") 6px,
+      transparent 6px,
+      transparent 12px
+    );
+    height: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
